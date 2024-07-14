@@ -1,4 +1,5 @@
 import "@nomicfoundation/hardhat-toolbox";
+import "hardhat-abi-exporter";
 import "hardhat-deploy";
 import type { HardhatUserConfig } from "hardhat/config";
 import { vars } from "hardhat/config";
@@ -50,6 +51,7 @@ function getChainConfig(chain: keyof typeof chainIds): NetworkUserConfig {
 
 const config: HardhatUserConfig = {
   defaultNetwork: "hardhat",
+  // defaultNetwork: "sepolia",
   namedAccounts: {
     deployer: 0,
   },
@@ -101,7 +103,7 @@ const config: HardhatUserConfig = {
     tests: "./test",
   },
   solidity: {
-    version: "0.8.19",
+    version: "0.8.20",
     settings: {
       metadata: {
         // Not including the metadata hash
@@ -119,6 +121,11 @@ const config: HardhatUserConfig = {
   typechain: {
     outDir: "types",
     target: "ethers-v6",
+  },
+  abiExporter: {
+    path: "./abi",
+    only: ["Bty"],
+    spacing: 2,
   },
 };
 
