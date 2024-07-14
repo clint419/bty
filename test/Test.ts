@@ -7,8 +7,7 @@ describe("Test", function () {
   const tester: string = "0x52F182434910DB60FE2b75a4C1924218E9EC1D93";
   const kk = async function () {
     const test = await ethers.getContractFactory("Test");
-    const result = await test.deploy(tester);
-    return result;
+    return await test.deploy(tester);
   };
 
   it("Test deploy", async () => {
