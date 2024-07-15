@@ -1,17 +1,17 @@
 import { expect } from "chai";
 import { ethers } from "hardhat";
 
-// import { Test, Test__factory } from "../types";
 
 describe("Test", function () {
   const tester: string = "0x52F182434910DB60FE2b75a4C1924218E9EC1D93";
-  const kk = async function () {
+
+  before(async function () {
     const test = await ethers.getContractFactory("Test");
-    return await test.deploy(tester);
-  };
+    this.testContract =  await test.deploy(tester);
+  })
 
   it("Test deploy", async () => {
-    const result = await kk();
+    const result = this.ctx.testContract;
     console.log(await result.getAddress());
     console.log(await result.SWORD());
     console.log(await result.owner());
@@ -23,12 +23,12 @@ describe("Test", function () {
   });
 
   it("Test owner", async () => {
-    const result = await kk();
+    const result = this.ctx.testContract
     expect(await result.owner()).equal("0xB9FCDb62FEB9521D69c57195bf808e9CE24c2B30");
   });
 
   it("Test constant", async () => {
-    const result = await kk();
+    const result =  this.ctx.testContract
     expect(await result.SWORD()).equal(10n);
   });
 });
