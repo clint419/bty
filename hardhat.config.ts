@@ -50,7 +50,7 @@ function getChainConfig(chain: keyof typeof chainIds): NetworkUserConfig {
 }
 
 const config: HardhatUserConfig = {
-  defaultNetwork: "hardhat",
+  defaultNetwork: "localhost",
   // defaultNetwork: "sepolia",
   // namedAccounts: {
   //   deployer: 0,
@@ -74,12 +74,11 @@ const config: HardhatUserConfig = {
     src: "./contracts",
   },
   networks: {
-    // hardhat: {
-    //   accounts: {
-    //     mnemonic,
-    //   },
-    //   chainId: chainIds.hardhat,
-    // },
+    localhost: {
+      accounts: ["df57089febbacf7ba0bc227dafbffa9fc08a93fdc68e1e42411a14efcf23656e"],
+      chainId: chainIds.hardhat,
+      url: "http://localhost:8545",
+    },
     ganache: {
       accounts: {
         mnemonic,

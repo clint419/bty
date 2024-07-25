@@ -1,3 +1,4 @@
+import { mine } from "@nomicfoundation/hardhat-network-helpers";
 import { ethers, upgrades } from "hardhat";
 
 async function main() {
@@ -11,6 +12,15 @@ async function main() {
   const bty = await upgrades.deployProxy(Bty, params);
   await bty.waitForDeployment();
   console.log("Bty token deployed to:", await bty.getAddress());
+  await mine(100);
+  console.log(await ethers.provider.getBlockNumber());
 }
-
-void main().then(() => console.log("Deployed end!"));
+main()
+  .then(() => {
+    console.log("Deployed end!");
+    process.exit(0);
+  })
+  .catch((error) => {
+    console.error(error);
+    process.exit(1);
+  });
