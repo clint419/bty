@@ -1,20 +1,16 @@
-import { DeployFunction } from "hardhat-deploy/types";
-import { HardhatRuntimeEnvironment } from "hardhat/types";
+import { ethers, upgrades } from "hardhat";
 
-const func: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
-  const { deployer } = await hre.getNamedAccounts();
-  const { deploy } = hre.deployments;
+async function main() {
+  const Bty = await ethers.getContractFactory("Bty");
+  const params = [
+    "0xAADb4239dDB696C3a63beAd92ADB6cA30Ea66D3b",
+    "0xAADb4239dDB696C3a63beAd92ADB6cA30Ea66D3b",
+    "0xAADb4239dDB696C3a63beAd92ADB6cA30Ea66D3b",
+    "0xAADb4239dDB696C3a63beAd92ADB6cA30Ea66D3b",
+  ];
+  const bty = await upgrades.deployProxy(Bty, params);
+  await bty.waitForDeployment();
+  console.log("Bty token deployed to:", await bty.getAddress());
+}
 
-  // console.log(hre.network)
-  // console.log(deployer)
-
-  const bty = await deploy("Bty", {
-    from: deployer,
-    log: true,
-  });
-
-  console.log(`Bty contract: `, bty.address);
-};
-export default func;
-func.id = "bty"; // id required to prevent reexecution
-func.tags = ["Bty"];
+void main().then(() => console.log("Deployed end!"));

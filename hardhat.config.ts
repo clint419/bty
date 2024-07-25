@@ -1,12 +1,12 @@
 import "@nomicfoundation/hardhat-toolbox";
+import "@openzeppelin/hardhat-upgrades";
 import "hardhat-abi-exporter";
-import "hardhat-deploy";
+// import "hardhat-deploy";
 import type { HardhatUserConfig } from "hardhat/config";
 import { vars } from "hardhat/config";
 import type { NetworkUserConfig } from "hardhat/types";
 
 import "./tasks/accounts";
-import "./tasks/lock";
 
 // Run 'npx hardhat vars setup' to see the list of variables that need to be set
 
@@ -52,9 +52,9 @@ function getChainConfig(chain: keyof typeof chainIds): NetworkUserConfig {
 const config: HardhatUserConfig = {
   defaultNetwork: "hardhat",
   // defaultNetwork: "sepolia",
-  namedAccounts: {
-    deployer: 0,
-  },
+  // namedAccounts: {
+  //   deployer: 0,
+  // },
   etherscan: {
     apiKey: {
       arbitrumOne: vars.get("ARBISCAN_API_KEY", ""),
@@ -74,12 +74,12 @@ const config: HardhatUserConfig = {
     src: "./contracts",
   },
   networks: {
-    hardhat: {
-      accounts: {
-        mnemonic,
-      },
-      chainId: chainIds.hardhat,
-    },
+    // hardhat: {
+    //   accounts: {
+    //     mnemonic,
+    //   },
+    //   chainId: chainIds.hardhat,
+    // },
     ganache: {
       accounts: {
         mnemonic,

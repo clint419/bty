@@ -1,14 +1,13 @@
 import { expect } from "chai";
 import { ethers } from "hardhat";
 
-
 describe("Test", function () {
   const tester: string = "0x52F182434910DB60FE2b75a4C1924218E9EC1D93";
 
   before(async function () {
     const test = await ethers.getContractFactory("Test");
-    this.testContract =  await test.deploy(tester);
-  })
+    this.testContract = await test.deploy(tester);
+  });
 
   it("Test deploy", async () => {
     const result = this.ctx.testContract;
@@ -23,12 +22,12 @@ describe("Test", function () {
   });
 
   it("Test owner", async () => {
-    const result = this.ctx.testContract
+    const result = this.ctx.testContract;
     expect(await result.owner()).equal("0xB9FCDb62FEB9521D69c57195bf808e9CE24c2B30");
   });
 
   it("Test constant", async () => {
-    const result =  this.ctx.testContract
+    const result = this.ctx.testContract;
     expect(await result.SWORD()).equal(10n);
   });
 });

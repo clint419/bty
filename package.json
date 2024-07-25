@@ -1,17 +1,19 @@
 {
-  "name": "@prb/hardhat-template",
-  "description": "Hardhat-based template for developing Solidity smart contracts",
+  "name": "bty",
+  "description": "bty ERC20 token",
   "version": "1.0.0",
   "author": {
-    "name": "Paul Razvan Berg",
-    "url": "https://github.com/PaulRBerg"
+    "name": "clint",
+    "url": "https://github.com/clint419/bty"
   },
   "devDependencies": {
     "@nomicfoundation/hardhat-chai-matchers": "^2.0.2",
-    "@nomicfoundation/hardhat-ethers": "^3.0.5",
+    "@nomicfoundation/hardhat-ethers": "^3.0.6",
     "@nomicfoundation/hardhat-network-helpers": "^1.0.10",
     "@nomicfoundation/hardhat-toolbox": "^4.0.0",
     "@nomicfoundation/hardhat-verify": "^2.0.2",
+    "@openzeppelin/contracts-upgradeable": "^5.0.2",
+    "@openzeppelin/hardhat-upgrades": "^3.2.0",
     "@trivago/prettier-plugin-sort-imports": "^4.3.0",
     "@typechain/ethers-v6": "^0.5.1",
     "@typechain/hardhat": "^9.1.0",
