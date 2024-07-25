@@ -1,6 +1,7 @@
 import "@nomicfoundation/hardhat-toolbox";
 import "@openzeppelin/hardhat-upgrades";
 import "hardhat-abi-exporter";
+import "hardhat-ethernal";
 // import "hardhat-deploy";
 import type { HardhatUserConfig } from "hardhat/config";
 import { vars } from "hardhat/config";
@@ -125,6 +126,9 @@ const config: HardhatUserConfig = {
     path: "./abi",
     only: ["Bty"],
     spacing: 2,
+  },
+  ethernal: {
+    apiToken: process.env.ETHERNAL_API_TOKEN,
   },
 };
 

@@ -1,5 +1,5 @@
 import { mine } from "@nomicfoundation/hardhat-network-helpers";
-import { ethers, upgrades } from "hardhat";
+import { ethernal, ethers, upgrades } from "hardhat";
 
 async function main() {
   const Bty = await ethers.getContractFactory("Bty");
@@ -12,6 +12,10 @@ async function main() {
   const bty = await upgrades.deployProxy(Bty, params);
   await bty.waitForDeployment();
   console.log("Bty token deployed to:", await bty.getAddress());
+  await ethernal.push({
+    name: "Bty",
+    address: await bty.getAddress(),
+  });
   await mine(100);
   console.log(await ethers.provider.getBlockNumber());
 }
